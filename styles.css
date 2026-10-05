@@ -181,7 +181,6 @@ p { margin: 0 0 0.9em; }
 .hero p.lede { max-width: 42rem; color: #edf3f7; font-size: 1.05rem; }
 
 .wrap { width: min(1180px, 92vw); margin: 0 auto; }
-section { padding: 4.5rem 0; }
 .kicker {
   font-size: 0.75rem;
   letter-spacing: 0.16em;
