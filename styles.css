@@ -47,10 +47,14 @@ p { margin: 0 0 0.9em; }
   border-bottom: 1px solid var(--line);
 }
 .nav .brand {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  color: var(--ink);
+  display: flex;
+  align-items: center;
+  line-height: 0;
   text-decoration: none;
+}
+.nav .brand img {
+  height: 34px;
+  width: auto;
 }
 .nav a.here {
   font-family: var(--serif);
@@ -417,6 +421,7 @@ footer.site {
 @media (max-width: 640px) {
   .ratio-grid, .sys-grid, .spec-grid, .split, .tools, .cases, .broker, .feature, .mosaic, .stat-row, .facts { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }
+  .nav .brand img { height: 30px; }
   .rrow, .refit-head { grid-template-columns: 1fr; }
   .rrow input, input[type="text"] { width: 100%; }
   .chooser, .fit, .phase { grid-template-columns: 1fr; }
