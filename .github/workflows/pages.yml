@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, mnm]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -25,6 +25,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - name: Put local tools on PATH
+        run: echo "/Users/mattp/local/bin" >> "$GITHUB_PATH"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
