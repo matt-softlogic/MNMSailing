@@ -56,6 +56,45 @@ p { margin: 0 0 0.9em; }
 .nav a { color: var(--ink); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .nav a:hover { color: var(--blue); }
 .nav-links { display: flex; gap: 1rem; overflow-x: auto; }
+.links { position: relative; }
+.links summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.links summary::-webkit-details-marker { display: none; }
+.links summary::after { content: " ▾"; font-size: 0.7rem; }
+.links[open] summary::after { content: " ▴"; }
+.links-menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.7rem);
+  width: min(340px, 86vw);
+  background: #fbf8f2;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: 0.35rem;
+  z-index: 40;
+}
+.links-menu a {
+  display: block;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.98rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 6px;
+}
+.links-menu a:hover { background: var(--paper-2); }
+.links-menu a span {
+  display: block;
+  margin-top: 0.1rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
 
 .hero {
   min-height: 100svh;
