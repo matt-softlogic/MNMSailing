@@ -430,7 +430,7 @@ footer.site {
 
 .chooser {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   min-height: calc(100svh - 58px);
 }
 .pick {
@@ -450,10 +450,10 @@ footer.site {
   inset: 0;
   background: linear-gradient(180deg, rgba(8, 20, 32, 0.15) 0%, rgba(8, 20, 32, 0.2) 40%, rgba(8, 20, 32, 0.88) 100%);
 }
-.pick-inner { position: relative; z-index: 1; padding: 8vh 6vw 6vh; width: 100%; max-width: 38rem; }
-.pick .eyebrow { color: #f3d7a2; }
-.pick h2 { font-size: clamp(3.4rem, 7vw, 6.2rem); color: white; }
-.pick p { color: #edf3f7; font-size: 1.05rem; max-width: 28rem; }
+.pick-inner { position: relative; z-index: 1; padding: 8vh 1.5rem 6vh; width: 100%; max-width: 38rem; }
+.pick .eyebrow { color: #f3d7a2; letter-spacing: 0.08em; font-size: 0.7rem; }
+.pick h2 { font-size: clamp(2.4rem, 4.2vw, 4.4rem); color: white; }
+.pick p { color: #edf3f7; font-size: 0.98rem; max-width: 26rem; }
 .pick .go {
   display: inline-block;
   margin-top: 0.4rem;
@@ -505,7 +505,8 @@ footer.site {
 }
 .phase h3 { font-size: 1.55rem; margin-bottom: 0.35rem; }
 .phase .when { color: var(--muted); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; }
-.fit { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.95rem; }
+.fit-scroll { overflow-x: auto; margin-top: 1rem; }
+.fit { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 52rem; }
 .fit th { text-align: left; font-family: var(--serif); font-size: 1.35rem; font-weight: 560; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--ink); }
 .fit td { padding: 0.65rem 0.7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
 .fit td:first-child { color: var(--muted); width: 22%; }
