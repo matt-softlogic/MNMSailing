@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MN&amp;M — Pegasus and Paragon</title>
-  <meta name="description" content="Nikki and Matt’s boat studies. Pegasus, a 2009 Hunter 50 in San Diego, and Paragon, a 2008 Wauquiez Pilot Saloon 47 in Anacortes, set against the 2026–2029 sailing route.">
+  <title>MN&amp;M — three sailing studies</title>
+  <meta name="description" content="Nikki and Matt’s boat studies. Pegasus, Paragon, and Mariana, set against the 2026–2029 sailing route, with design-ratio charts on the same scales.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,560&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@340;480;600&display=swap" rel="stylesheet">
@@ -20,7 +20,8 @@
     <span class="spacer"></span>
     <nav class="nav-links">
       <a href="#route">Route</a>
-      <a href="#boats">The pair</a>
+      <a href="#boats">Studies</a>
+      <a href="#ratios">Ratios</a>
       <a href="pegasus/">Pegasus</a>
       <a href="paragon/">Paragon</a>
       <a href="mariana/">Mariana</a>
@@ -128,10 +129,27 @@
     </div>
   </section>
 
+  <section id="ratios">
+    <div class="wrap">
+      <p class="kicker">Same formulas · three hulls</p>
+      <h2>Where the design ratios sit.</h2>
+      <p class="prose">These are the scales Sailing Totem prints for waterline, beam, displacement, sail area, and comfort. The color is the band on that scale. It means more of that quality. It is not a grade. A higher comfort number and a higher sail-area number describe different boats. Real Feel, the roomy ratio, and Kerr speed are their own indexes. The formulas are not published, so those three are not drawn here. Capsize screening is the ordinary companion to comfort, with the old 2.0 line marked.</p>
+      <div class="legend" aria-hidden="true">
+        <span><i class="swatch" style="background:#0c527c;border-radius:50%"></i> Pegasus</span>
+        <span><i class="swatch" style="background:#9a6732;transform:rotate(45deg)"></i> Paragon</span>
+        <span><i class="swatch" style="background:#1a6cb8;clip-path:polygon(50% 0,100% 100%,0 100%)"></i> Mariana</span>
+      </div>
+      <div class="chart-grid" id="chartGrid"></div>
+      <p class="fine">Pegasus uses the shoal-draft Hunter 50 CC sheet already on her page: 36,945 lb, 43.83 ft waterline, 1,013 sq ft. Paragon uses the class sheet, 30,864 lb on 41.83 ft, not her heavier listing weight. At that listing weight her displacement/length moves toward 203 and her sail area/displacement toward 17.5. Mariana uses the listing weight, 33,726 lb, and the 38.75 ft waterline the class sheet borrows. Her comfort figure, 35.4, is the fin-keel number and is not recomputed. Nothing here is a stability booklet.</p>
+    </div>
+  </section>
+
   <footer class="site">
     <div class="wrap">
       <p>MN&amp;M sailing studies, October 2026. The route is the August 2026 timeline used as the frame for three boats: <a href="pegasus/">Pegasus</a>, the 2009 Hunter 50 Center Cockpit, <a href="paragon/">Paragon</a>, the 2008 Wauquiez Pilot Saloon 47, hull 34, and <a href="mariana/">Mariana</a>, the 2001 Moody 47 in Yarmouth. Open a study for the photographs, the class ratios, the conflicts in the listings, and the editable calculator.</p>
     </div>
   </footer>
+  <script src="vendor/echarts.min.js"></script>
+  <script src="ratios.js"></script>
 </body>
 </html>

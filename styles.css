@@ -221,6 +221,7 @@ section h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1rem; }
 .note h3 { font-size: 1.45rem; margin-bottom: 0.5rem; }
 .note.warn { border-top: 4px solid var(--warn); }
 .note.good { border-top: 4px solid var(--good); }
+blockquote.prose { margin: 0 0 1.2rem; padding: 0.1rem 0 0.1rem 1rem; border-left: 3px solid var(--brass); font-family: var(--serif); font-size: 1.28rem; line-height: 1.35; }
 
 .ratio-grid, .sys-grid, .spec-grid {
   display: grid;
@@ -411,8 +412,21 @@ footer.site {
 .lightbox .next { right: 1rem; top: 50%; }
 .lightbox p { position: absolute; bottom: 1.2rem; color: white; margin: 0; }
 
+.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1.2rem; }
+.chart-card { background: var(--card); border: 1px solid var(--line); padding: 0.85rem 0.95rem 0.7rem; }
+.chart-card h3 { font-size: 1.35rem; margin-bottom: 0.2rem; }
+.chart { height: 168px; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; margin: 0.4rem 0 0.2rem; }
+.legend span { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; }
+.swatch { width: 0.7rem; height: 0.7rem; display: inline-block; }
+.review { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 0.4rem 0 1rem; }
+.review td { padding: 0.42rem 0.55rem; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+.review td:nth-child(2) { font-family: var(--serif); font-size: 1.35rem; width: 2.4rem; line-height: 1; }
+.review tr.group td { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass); border-bottom-color: var(--ink); padding-top: 1rem; }
+.review .zero { color: var(--warn); }
+
 @media (max-width: 980px) {
-  .stat-row, .ratio-grid, .sys-grid, .spec-grid, .split, .tools, .cases, .broker, .feature, .mosaic { grid-template-columns: 1fr 1fr; }
+  .stat-row, .ratio-grid, .sys-grid, .spec-grid, .split, .tools, .cases, .broker, .feature, .mosaic, .chart-grid { grid-template-columns: 1fr 1fr; }
   .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .stat-row { grid-template-columns: 1fr 1fr 1fr; }
   .grid { grid-template-columns: 1fr 1fr; }
@@ -513,7 +527,7 @@ footer.site {
 .fit a { font-weight: 600; }
 
 @media (max-width: 800px) {
-  .chooser { grid-template-columns: 1fr; }
+  .chooser, .chart-grid { grid-template-columns: 1fr; }
   .pick { min-height: 88vh; }
   .phases::before { left: 0.55rem; }
   .phase { grid-template-columns: 1fr; gap: 0.4rem; }
