@@ -271,7 +271,9 @@ function renderGallery() {
   let html = "";
   for (let i = 1; i <= PHOTO_COUNT; i++) {
     const cap = CAPTIONS[i] || `Listing photograph ${i} of ${PHOTO_COUNT}.`;
-    html += `<button type="button" data-i="${i}" aria-label="Open photo ${i}"><img src="photos/${String(i).padStart(2,"0")}.jpg" alt="${cap}" loading="lazy"></button>`;
+    const alt = cap.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+    const file = String(i).padStart(2, "0");
+    html += `<button type="button" data-i="${i}" aria-label="Open photo ${file}"><img src="photos/${file}.jpg" alt="${alt}" width="1600" height="1067"></button>`;
   }
   grid.innerHTML = html;
   grid.addEventListener("click", (e) => {

@@ -283,6 +283,7 @@ figcaption {
   margin-top: 1rem;
 }
 .grid button {
+  position: relative;
   padding: 0;
   border: 0;
   background: #d9d3c6;
@@ -290,7 +291,8 @@ figcaption {
   aspect-ratio: 3/2;
   overflow: hidden;
 }
-.grid img { transition: transform 0.4s ease; }
+.grid img { position: absolute; inset: 0; transition: transform 0.4s ease; }
+.gallery-full { grid-template-columns: repeat(3, 1fr); }
 .grid button:hover img { transform: scale(1.04); }
 
 .specs { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
@@ -443,7 +445,7 @@ footer.site {
   .stat-row, .ratio-grid, .sys-grid, .spec-grid, .split, .tools, .cases, .broker, .feature, .mosaic, .chart-grid { grid-template-columns: 1fr 1fr; }
   .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .stat-row { grid-template-columns: 1fr 1fr 1fr; }
-  .grid { grid-template-columns: 1fr 1fr; }
+  .grid, .gallery-full { grid-template-columns: 1fr 1fr; }
   .inv { columns: 1; }
   .feature figure, .feature figure:first-child, .feature figure:last-child { min-height: 240px; }
 }
