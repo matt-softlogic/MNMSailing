@@ -252,6 +252,20 @@ blockquote.prose { margin: 0 0 1.2rem; padding: 0.1rem 0 0.1rem 1rem; border-lef
 .feature img, .mosaic img, .grid img { width: 100%; height: 100%; object-fit: cover; }
 .feature figure:first-child { min-height: 460px; }
 .feature figure:last-child { min-height: 460px; }
+.videos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin: 1.5rem 0 0.6rem;
+}
+.videos iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #d9d3c6;
+  display: block;
+}
+.videos p { margin: 0.45rem 0 0; color: var(--muted); font-size: 0.82rem; }
 .mosaic { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0.6rem; }
 .mosaic figure { min-height: 220px; }
 figcaption {
@@ -527,7 +541,7 @@ footer.site {
 .fit a { font-weight: 600; }
 
 @media (max-width: 800px) {
-  .chooser, .chart-grid { grid-template-columns: 1fr; }
+  .chooser, .chart-grid, .videos { grid-template-columns: 1fr; }
   .pick { min-height: 88vh; }
   .phases::before { left: 0.55rem; }
   .phase { grid-template-columns: 1fr; gap: 0.4rem; }
