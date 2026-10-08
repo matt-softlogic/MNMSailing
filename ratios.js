@@ -7,7 +7,7 @@ const MUTED = "#5c6b76";
 const BAND = ["rgba(22,32,41,0.05)", "rgba(154,103,50,0.18)", "rgba(12,82,124,0.13)", "rgba(154,103,50,0.18)", "rgba(22,32,41,0.07)"];
 
 const BOATS = {
-  pegasus: { name: "Pegasus", color: "#0c527c", symbol: "circle" },
+  saralynn: { name: "Sara Lynn", color: "#0c527c", symbol: "circle" },
   paragon: { name: "Paragon", color: "#9a6732", symbol: "diamond" },
   mariana: { name: "Mariana", color: "#1a6cb8", symbol: "triangle" }
 };
@@ -25,21 +25,21 @@ const CHARTS = [
       { from: 85, to: 95, name: "Long" },
       { from: 95, to: 98, name: "Very long" }
     ],
-    values: { pegasus: pct(43.83 / 49.92 * 100), paragon: pct(41.83 / 47.08 * 100), mariana: pct(38.75 / (47 + 8 / 12) * 100) },
-    note: "Longer is more of the waterline, which is the speed side of this ratio. Shorter is more of the pitching they warn about. Mariana’s waterline is the borrowed 38.75 ft, so her dot moves right if the real waterline is longer."
+    values: { saralynn: pct(49.25 / 58.40 * 100), paragon: pct(41.83 / 47.08 * 100), mariana: pct(38.75 / (47 + 8 / 12) * 100) },
+    note: "Longer is more of the waterline, which is the speed side of this ratio. Shorter is more of the pitching they warn about. Sara Lynn uses 58.40 ft overall, the specification, not the 57.0 ft header. On 57.0 ft she would read about 86.4 and sit in the long band. Mariana’s waterline is the borrowed 38.75 ft, so her dot moves right if the real waterline is longer."
   },
   {
     key: "beam",
     title: "Beam / overall length",
-    min: 27, max: 35, unit: "%", digits: 1,
+    min: 26, max: 35, unit: "%", digits: 1,
     bands: [
       { from: 27, to: 29, name: "Narrow" },
       { from: 29, to: 31, name: "Moderate" },
       { from: 31, to: 33, name: "Wide" },
       { from: 33, to: 35, name: "Very wide" }
     ],
-    values: { pegasus: pct(14.75 / 49.92 * 100), paragon: pct(14.8 / 47.08 * 100), mariana: pct((14 + 5 / 12) / (47 + 8 / 12) * 100) },
-    note: "Monohull scale. Wider is more form stability and, only roughly, more room. Paragon’s listing beam is 15 ft 2 in. This dot is the class beam, 14.8 ft."
+    values: { saralynn: pct(16.17 / 58.40 * 100), paragon: pct(14.8 / 47.08 * 100), mariana: pct((14 + 5 / 12) / (47 + 8 / 12) * 100) },
+    note: "Monohull scale. Wider is more form stability and, only roughly, more room. Sara Lynn at 27.7 is in the narrow band because the ratio uses 58.40 ft overall. Paragon’s listing beam is 15 ft 2 in. Her dot is the class beam, 14.8 ft."
   },
   {
     key: "dl",
@@ -52,13 +52,13 @@ const CHARTS = [
       { from: 270, to: 370, name: "Heavy" },
       { from: 370, to: 400, name: "Very heavy" }
     ],
-    values: { pegasus: 196, paragon: 188, mariana: 259 },
-    note: "All three sit in the moderate band. Mariana is near the heavy line only because the short borrowed waterline is in the denominator. Paragon’s listing displacement would move her toward 203, still moderate."
+    values: { saralynn: 181.71, paragon: 188, mariana: 259 },
+    note: "Sara Lynn’s dot is the published 181.71, which rounds to 182 on this scale. Moderate, near the light line at 175. Paragon is 188. Mariana’s 259 is near the heavy line only because the short borrowed waterline is in the denominator. Paragon’s listing displacement would move her toward 203, still moderate."
   },
   {
     key: "sad",
     title: "Sail area / displacement",
-    min: 12, max: 24, unit: "", digits: 1,
+    min: 12, max: 24, unit: "", digits: 2,
     bands: [
       { from: 12, to: 15, name: "Tiny" },
       { from: 15, to: 17, name: "Small" },
@@ -66,21 +66,21 @@ const CHARTS = [
       { from: 19, to: 22, name: "Big" },
       { from: 22, to: 24, name: "Huge" }
     ],
-    values: { pegasus: 14.6, paragon: 18.5, mariana: 14.4 },
-    note: "Triangle sail area, not the furling sail that is actually bent on. Pegasus publishes 1,131 sq ft for the furling plan, which would lift her to about 16.3. Paragon’s heavier listing weight would pull her toward 17.5."
+    values: { saralynn: 20.26, paragon: 18.5, mariana: 14.4 },
+    note: "Reported class sail area, not a triangle measured off the furling sails aboard. Sara Lynn’s 1,679 sq ft is that class figure, and the staysail is not on the boat. Paragon’s heavier listing weight would pull her toward 17.5."
   },
   {
     key: "bal",
     title: "Ballast ratio",
-    min: 24, max: 42, unit: "%", digits: 1,
+    min: 24, max: 42, unit: "%", digits: 2,
     bands: [],
-    values: { pegasus: 33.8, paragon: 28.9, mariana: 30.7 },
-    note: "No color bands. Totem’s own note is that ballast ratio misleads unless the draft and the keel are similar. These three are all shoal boats, and the lead is still in a different shape on each."
+    values: { saralynn: 35.18, paragon: 28.9, mariana: 30.7 },
+    note: "No color bands. Totem’s own note is that ballast ratio misleads unless the draft and the keel are similar. Sara Lynn is the deep keel. Paragon and Mariana are the shoal boats. The lead is in a different shape on each."
   },
   {
     key: "comfort",
     title: "Comfort ratio",
-    min: 15, max: 65, unit: "", digits: 1,
+    min: 15, max: 65, unit: "", digits: 2,
     bands: [
       { from: 15, to: 20, name: "Very low" },
       { from: 20, to: 30, name: "Low" },
@@ -88,8 +88,8 @@ const CHARTS = [
       { from: 45, to: 60, name: "High" },
       { from: 60, to: 65, name: "Very high" }
     ],
-    values: { pegasus: 34.7, paragon: 30.4, mariana: 35.4 },
-    note: "Brewer’s number. Moderate is 30 to 45. Totem’s warning stands: high is softer in some seas and worse at anchor. Mariana’s 35.4 is the fin-keel sheet, not a shoal recomputation."
+    values: { saralynn: 35.51, paragon: 30.4, mariana: 35.4 },
+    note: "Brewer’s number. Moderate is 30 to 45. Totem’s warning stands: high is softer in some seas and worse at anchor. Sara Lynn’s 35.51 is the published Beneteau 57 figure and is not recomputed. Mariana’s 35.4 is the fin-keel sheet, not a shoal recomputation."
   },
   {
     key: "csf",
@@ -97,16 +97,16 @@ const CHARTS = [
     min: 1.5, max: 2.25, unit: "", digits: 2,
     bands: [],
     mark: 2,
-    values: { pegasus: 1.77, paragon: 1.89, mariana: 1.78 },
+    values: { saralynn: 1.78, paragon: 1.89, mariana: 1.78 },
     note: "The line is 2.0, the old offshore screen. Under it is not a stability certificate. Paragon is the closest of the three. Her listing beam is wider than the class beam used here."
   },
   {
     key: "hull",
     title: "Hull speed",
-    min: 7.6, max: 9.4, unit: " kn", digits: 2,
+    min: 7.6, max: 9.7, unit: " kn", digits: 2,
     bands: [],
-    values: { pegasus: 8.9, paragon: 8.7, mariana: 8.34 },
-    note: "1.34 × √LWL. A displacement ceiling, not a day’s run. Mariana’s number rises if her real waterline is longer than 38.75 ft."
+    values: { saralynn: 9.40, paragon: 8.7, mariana: 8.34 },
+    note: "1.34 × √LWL. A displacement ceiling, not a day’s run. Sara Lynn’s 9.40 uses the 49.25 ft waterline. Mariana’s number rises if her real waterline is longer than 38.75 ft."
   }
 ];
 
