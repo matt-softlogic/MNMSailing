@@ -1,4 +1,4 @@
-/* Design-ratio bands for the three boats on this site.
+/* Design-ratio bands for the boats on this site.
    Scales are the ones Sailing Totem prints in Boat Design Ratios.
    Custom indexes (Real Feel, roomy ratio, Kerr speed) are omitted.
    Their formulas are not published. */
@@ -9,7 +9,8 @@ const BAND = ["rgba(22,32,41,0.05)", "rgba(154,103,50,0.18)", "rgba(12,82,124,0.
 const BOATS = {
   saralynn: { name: "Sara Lynn", color: "#0c527c", symbol: "circle" },
   paragon: { name: "Paragon", color: "#9a6732", symbol: "diamond" },
-  mariana: { name: "Mariana", color: "#1a6cb8", symbol: "triangle" }
+  mariana: { name: "Mariana", color: "#1a6cb8", symbol: "triangle" },
+  secondwind: { name: "Second Wind", color: "#1f7a5a", symbol: "rect" }
 };
 
 const pct = (n) => Math.round(n * 10) / 10;
@@ -25,8 +26,8 @@ const CHARTS = [
       { from: 85, to: 95, name: "Long" },
       { from: 95, to: 98, name: "Very long" }
     ],
-    values: { saralynn: pct(49.25 / 58.40 * 100), paragon: pct(41.83 / 47.08 * 100), mariana: pct(38.75 / (47 + 8 / 12) * 100) },
-    note: "Longer is more of the waterline, which is the speed side of this ratio. Shorter is more of the pitching they warn about. Sara Lynn uses 58.40 ft overall, the specification, not the 57.0 ft header. On 57.0 ft she would read about 86.4 and sit in the long band. Mariana’s waterline is the borrowed 38.75 ft, so her dot moves right if the real waterline is longer."
+    values: { saralynn: pct(49.25 / 58.40 * 100), paragon: pct(41.83 / 47.08 * 100), mariana: pct(38.75 / (47 + 8 / 12) * 100), secondwind: pct(42.42 / 46.32 * 100) },
+    note: "Longer is more of the waterline, which is the speed side of this ratio. Shorter is more of the pitching they warn about. Sara Lynn uses 58.40 ft overall, the specification, not the 57.0 ft header. On 57.0 ft she would read about 86.4 and sit in the long band. Mariana’s waterline is the borrowed 38.75 ft, so her dot moves right if the real waterline is longer. Second Wind’s waterline is the class card’s 42.42 ft. The listing does not print one."
   },
   {
     key: "beam",
@@ -38,8 +39,8 @@ const CHARTS = [
       { from: 31, to: 33, name: "Wide" },
       { from: 33, to: 35, name: "Very wide" }
     ],
-    values: { saralynn: pct(16.17 / 58.40 * 100), paragon: pct(14.8 / 47.08 * 100), mariana: pct((14 + 5 / 12) / (47 + 8 / 12) * 100) },
-    note: "Monohull scale. Wider is more form stability and, only roughly, more room. Sara Lynn at 27.7 is in the narrow band because the ratio uses 58.40 ft overall. Paragon’s listing beam is 15 ft 2 in. Her dot is the class beam, 14.8 ft."
+    values: { saralynn: pct(16.17 / 58.40 * 100), paragon: pct(14.8 / 47.08 * 100), mariana: pct((14 + 5 / 12) / (47 + 8 / 12) * 100), secondwind: pct(14.53 / 46.32 * 100) },
+    note: "Monohull scale. Wider is more form stability and, only roughly, more room. Sara Lynn at 27.7 is in the narrow band because the ratio uses 58.40 ft overall. Paragon’s listing beam is 15 ft 2 in. Her dot is the class beam, 14.8 ft. Second Wind uses the class beam, 14.53 ft. The listing specification also prints 14 ft 6 in. A Denison highlight prints 14 ft 0 in."
   },
   {
     key: "dl",
@@ -52,8 +53,8 @@ const CHARTS = [
       { from: 270, to: 370, name: "Heavy" },
       { from: 370, to: 400, name: "Very heavy" }
     ],
-    values: { saralynn: 181.71, paragon: 188, mariana: 259 },
-    note: "Sara Lynn’s dot is the published 181.71, which rounds to 182 on this scale. Moderate, near the light line at 175. Paragon is 188. Mariana’s 259 is near the heavy line only because the short borrowed waterline is in the denominator. Paragon’s listing displacement would move her toward 203, still moderate."
+    values: { saralynn: 181.71, paragon: 188, mariana: 259, secondwind: 152.14 },
+    note: "Sara Lynn’s dot is the published 181.71, which rounds to 182 on this scale. Moderate, near the light line at 175. Paragon is 188. Mariana’s 259 is near the heavy line only because the short borrowed waterline is in the denominator. Paragon’s listing displacement would move her toward 203, still moderate. Second Wind’s 152 is the published Sense 46 card, on the light side of light. The listing does not print a displacement."
   },
   {
     key: "sad",
@@ -66,16 +67,16 @@ const CHARTS = [
       { from: 19, to: 22, name: "Big" },
       { from: 22, to: 24, name: "Huge" }
     ],
-    values: { saralynn: 20.26, paragon: 18.5, mariana: 14.4 },
-    note: "Reported class sail area, not a triangle measured off the furling sails aboard. Sara Lynn’s 1,679 sq ft is that class figure, and the staysail is not on the boat. Paragon’s heavier listing weight would pull her toward 17.5."
+    values: { saralynn: 20.26, paragon: 18.5, mariana: 14.4, secondwind: 19.54 },
+    note: "Reported class sail area, not a triangle measured off the furling sails aboard. Sara Lynn’s 1,679 sq ft is that class figure, and the staysail is not on the boat. Paragon’s heavier listing weight would pull her toward 17.5. Second Wind’s 19.54 is the published card on 1,068 sq ft. The genoa was replaced in 2025. The main’s year is not stated."
   },
   {
     key: "bal",
     title: "Ballast ratio",
     min: 24, max: 42, unit: "%", digits: 2,
     bands: [],
-    values: { saralynn: 35.18, paragon: 28.9, mariana: 30.7 },
-    note: "No color bands. Totem’s own note is that ballast ratio misleads unless the draft and the keel are similar. Sara Lynn is the deep keel. Paragon and Mariana are the shoal boats. The lead is in a different shape on each."
+    values: { saralynn: 35.18, paragon: 28.9, mariana: 30.7, secondwind: 29.31 },
+    note: "No color bands. Totem’s own note is that ballast ratio misleads unless the draft and the keel are similar. Sara Lynn is the deep keel. Paragon and Mariana are the shoal boats. Second Wind’s 29.31 is the one ballast figure on the Sense 46 card. The listing draft is the shallow number, and the card does not print a separate shallow ballast."
   },
   {
     key: "comfort",
@@ -88,8 +89,8 @@ const CHARTS = [
       { from: 45, to: 60, name: "High" },
       { from: 60, to: 65, name: "Very high" }
     ],
-    values: { saralynn: 35.51, paragon: 30.4, mariana: 35.4 },
-    note: "Brewer’s number. Moderate is 30 to 45. Totem’s warning stands: high is softer in some seas and worse at anchor. Sara Lynn’s 35.51 is the published Beneteau 57 figure and is not recomputed. Mariana’s 35.4 is the fin-keel sheet, not a shoal recomputation."
+    values: { saralynn: 35.51, paragon: 30.4, mariana: 35.4, secondwind: 26.13 },
+    note: "Brewer’s number. Moderate is 30 to 45. Totem’s warning stands: high is softer in some seas and worse at anchor. Sara Lynn’s 35.51 is the published Beneteau 57 figure and is not recomputed. Mariana’s 35.4 is the fin-keel sheet, not a shoal recomputation. Second Wind’s 26.13 is the published Sense 46 figure. It sits in the low band."
   },
   {
     key: "csf",
@@ -97,16 +98,16 @@ const CHARTS = [
     min: 1.5, max: 2.25, unit: "", digits: 2,
     bands: [],
     mark: 2,
-    values: { saralynn: 1.78, paragon: 1.89, mariana: 1.78 },
-    note: "The line is 2.0, the old offshore screen. Under it is not a stability certificate. Paragon is the closest of the three. Her listing beam is wider than the class beam used here."
+    values: { saralynn: 1.78, paragon: 1.89, mariana: 1.78, secondwind: 1.97 },
+    note: "The line is 2.0, the old offshore screen. Under it is not a stability certificate. Second Wind’s published 1.97 is the closest of the four. Paragon’s listing beam is wider than the class beam used here."
   },
   {
     key: "hull",
     title: "Hull speed",
     min: 7.6, max: 9.7, unit: " kn", digits: 2,
     bands: [],
-    values: { saralynn: 9.40, paragon: 8.7, mariana: 8.34 },
-    note: "1.34 × √LWL. A displacement ceiling, not a day’s run. Sara Lynn’s 9.40 uses the 49.25 ft waterline. Mariana’s number rises if her real waterline is longer than 38.75 ft."
+    values: { saralynn: 9.40, paragon: 8.7, mariana: 8.34, secondwind: 8.73 },
+    note: "1.34 × √LWL. A displacement ceiling, not a day’s run. Sara Lynn’s 9.40 uses the 49.25 ft waterline. Mariana’s number rises if her real waterline is longer than 38.75 ft. Second Wind’s 8.73 uses the class waterline, 42.42 ft."
   }
 ];
 
@@ -142,7 +143,7 @@ function draw(spec) {
   }].concat(Object.keys(BOATS).map((id, i) => ({
     name: BOATS[id].name,
     type: "scatter",
-    data: [[spec.values[id], [0.42, 0, -0.42][i]]],
+    data: [[spec.values[id], [0.62, 0.22, -0.22, -0.62][i]]],
     symbol: BOATS[id].symbol,
     symbolSize: 16,
     itemStyle: { color: BOATS[id].color, borderColor: "#fbf8f2", borderWidth: 1.5 },
