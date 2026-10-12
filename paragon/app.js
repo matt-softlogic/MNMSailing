@@ -1,6 +1,6 @@
 /* Planning model for Paragon.
    Same bones as the TRU All-In Calculator (v2.1) file
-   "All In Calc Wauquiez PS47 - PARAGON.tru".
+   paragon/all-in-calc-wauquiez-ps47-paragon.tru.
    One price, purchase costs, then refit low/high.
    Tax defaults to zero: the Oregon-buyer 45-day Washington exit.
    The 8.9% switch is the missed-clock case. */
