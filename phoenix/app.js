@@ -8,7 +8,8 @@ const INS_RATE = 0.02;
 const INS_FIXED = 8000;
 const LIST = 395000;
 const CASH = 400000;
-const PHOTO_COUNT = 29;
+const PHOTO_COUNT = 76;
+const SECTIONS = { listing: [1, 42], cruising: [43, 73], repair: [74, 76] };
 const CLOSES = { ask: 395000 };
 
 const REFIT = [
@@ -70,7 +71,54 @@ const CAPTIONS = {
   26: "Engine space.",
   27: "Victron electrical installation.",
   28: "Equipment bay.",
-  29: "The tender, PHOENIX on the tube, on deck."
+  29: "The tender, PHOENIX on the tube, on deck.",
+  30: "Saloon dinette and table.",
+  31: "Saloon table and settee under the windows.",
+  32: "Saloon looking aft to the companionway and galley.",
+  33: "Galley: stove, oven, and microwave.",
+  34: "Galley gangway toward the aft cabin.",
+  35: "From aloft, alongside.",
+  36: "Andersen electric winch.",
+  37: "Alongside a harbor wall.",
+  38: "Lazarette locker, empty.",
+  39: "From the air under sail. People are visible in the cockpit.",
+  40: "Vang mounting plate (platine vit-de-mulet).",
+  41: "A fitting out of the boat, 2021.",
+  42: "Small listing image, 2015.",
+  43: "Under spinnaker, August 2015.",
+  44: "Under sail, August 2015.",
+  45: "Bow wave, September 2015.",
+  46: "At the helm in a breeze, September 2015.",
+  47: "Wake and topsides, September 2015.",
+  48: "Deck hatch and winch, December 2016.",
+  49: "Equipment in a technical locker, April 2017.",
+  50: "Aft cabin, September 2018.",
+  51: "Cockpit dinner at night, July 2019.",
+  52: "Nav station, April 2020.",
+  53: "Two anchors on the dock, May 2020.",
+  54: "Rudder out of the boat on the hard, August 2020. A person stands beside it.",
+  55: "Boom and rig gear on the dock, September 2020.",
+  56: "Vang or gooseneck fitting, September 2020.",
+  57: "Rudder on the hard, September 2020.",
+  58: "Keel and rudder from aft, on the hard, September 2020.",
+  59: "On the hard, keel and hull, September 2021.",
+  60: "Raymarine display, October 2021.",
+  61: "Galley storage, August 2022.",
+  62: "Mast fitting, April 2023.",
+  63: "Cockpit locker: life raft and jerry cans, October 2023.",
+  64: "Gas locker, October 2023.",
+  65: "Tender outboard, October 2023.",
+  66: "Outboard on the pushpit, October 2023.",
+  67: "Chain laid out in the yard, October 2023.",
+  68: "Foredeck and mast base, October 2023.",
+  69: "Winch and lines, March 2024.",
+  70: "Cockpit with gear sorted, March 2024.",
+  71: "Locker with bags and spares, March 2024.",
+  72: "Bimini, July 2024.",
+  73: "Sprayhood and enclosure, July 2024.",
+  74: "On the stands at the Phuket yard, June 2025. Yard workers are visible.",
+  75: "In the travel lift at Phuket Boat Lagoon, June 2025.",
+  76: "Rudder blade in a workshop. Undated; filed with the repair period."
 };
 
 const money = (n) => {
@@ -161,16 +209,18 @@ function renderRefit() {
 }
 
 function renderGallery() {
-  const grid = document.getElementById("grid");
-  let html = "";
-  for (let i = 1; i <= PHOTO_COUNT; i++) {
-    const cap = CAPTIONS[i] || `Photograph ${i} of ${PHOTO_COUNT}. Phoenix broker set.`;
-    html += `<button type="button" data-i="${i}" aria-label="Open photo ${i}"><img src="photos/${String(i).padStart(2,"0")}.jpg" alt="${cap}" loading="lazy"></button>`;
-  }
-  grid.innerHTML = html;
-  grid.addEventListener("click", (e) => {
-    const btn = e.target.closest("button");
-    if (btn) openLightbox(Number(btn.dataset.i));
+  document.querySelectorAll(".grid[data-section]").forEach((grid) => {
+    const [a, b] = SECTIONS[grid.dataset.section];
+    let html = "";
+    for (let i = a; i <= b; i++) {
+      const cap = CAPTIONS[i] || `Photograph ${i} of ${PHOTO_COUNT}. Phoenix project folder.`;
+      html += `<button type="button" data-i="${i}" aria-label="Open photo ${i}"><img src="photos/${String(i).padStart(2,"0")}.jpg" alt="${cap}" loading="lazy"></button>`;
+    }
+    grid.innerHTML = html;
+    grid.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (btn) openLightbox(Number(btn.dataset.i));
+    });
   });
 }
 
