@@ -13,15 +13,15 @@ const CLOSES = { ask: 395000 };
 
 const REFIT = [
   ["Energy", "Solar. Two 120 W portable panels are aboard. The brief asks for 800 W or more, which on a PS47 likely means an arch or a bimini array.", 4000, 12000],
-  ["Elec", "230 V / 50 Hz boat. Isolation or step-down transformer, shore-power inlet, and 120 V outlets where they matter.", 1500, 5000],
+  ["Elec", "Shore power. The spec sheet lists 110/230 V, 50/60 Hz shore power and a shore isolation transformer already aboard. The boat circuits stay 230 V: an inlet adapter, a few 120 V outlets, and a check of the chargers on 60 Hz.", 500, 1500],
   ["Hull", "July 2024 grounding, Anambas. Purchase-survey check of the repaired grid, keel bolts, and the keel-to-hull joint. Zero if it comes back clean.", 0, 20000],
   ["Hull", "Teak decks, 2015. Condition not described in the listing. Recaulk on the low side is folded into contingency.", 0, 20000],
   ["Prop", "Yanmar 4JH4-HTE, about 3,250 hours. Service, injectors, heat exchanger, and the drive train. A major on the high side.", 1000, 15000],
   ["Other", "Delivery top-up. The seller may move her to the Med and then the Caribbean. The base delivery line assumes a Caribbean or Panama handover; a Seychelles or Med start costs more.", 0, 20000],
-  ["Nav", "Navigation refresh. Three Raymarine MFDs, Starlink, and Iridium are aboard. Software, sensors, and US charts.", 0, 5000],
-  ["Safety", "Life raft service and safety-gear recertification.", 500, 3000],
+  ["Nav", "Navigation refresh. Three Raymarine MFDs, Starlink, Iridium, AIS, and ForwardScan are aboard. No second autopilot is budgeted: the ST50 has a full spare unit. Software, sensors, and US charts.", 0, 3000],
+  ["Safety", "Life raft service and recertification of the listed kit: raft, AIS, PLB, drogue, survival suits, grab bag.", 300, 2000],
   ["Sails", "Sails after 48,000-plus miles. Loft inspection, repair, or a new headsail.", 1000, 10000],
-  ["Other", "Spares. The broker says she is fully spared.", 0, 2000],
+  ["Other", "Spares. The spec sheet lists a full set aboard.", 0, 1000],
   ["Other", "Import, documentation, and a US broker for a foreign-flagged boat. Not tax advice.", 0, 6000],
   ["Other", "Contingency.", 3000, 12000]
 ];
@@ -205,12 +205,13 @@ function downloadTru() {
     hi: String(Math.round(num(document.getElementById("hi-" + i))))
   }));
   const notes = [
+    "Spec sheet update 12 Oct 2026: ST50 plus full spare, 110/230 V 50/60 Hz shore power with isolation transformer, LiFePO4 400 A, 4,000 W inverter, Balmar 250 A second alternator, 860 L fuel, 500 L water.",
     "Phoenix, 2015 Wauquiez Pilot Saloon 47, the last PS47 built, one owner. Lying Seychelles. Ask $395,000, BVI Yacht Sales. Planning figures, not an offer. 12 Oct 2026.",
     "The broker's 26 Aug 2026 email calls her a 2016. The listing says 2015. Confirm.",
     "July 2024 grounding in the Anambas, Indonesia: keel, hull, internal grid. Repaired in Phuket 2024-25 under a surveyor. Report dated 22 Jun 2025. Disclosed by the broker.",
     "Draft 8 ft 0 in on the listing, 2.10 m (6 ft 11 in) in the repair report. Unresolved.",
     "Engine Yanmar 4JH4-HTE 110 hp, about 3,250 hours. 48,000+ miles. 230 V / 50 Hz.",
-    "Insurance $8,000 unless the 2% switch is on. Tax $0 here; import and use tax for a foreign-flagged boat are separate questions. Not tax advice. Delivery $25,000 base, with a top-up line."
+    "Insurance $8,000 unless the 2% switch is on. ST50 has a full spare. Shore isolation transformer and 50/60 Hz shore power aboard per the spec sheet. Fuel 860 L. Tax $0 here; import and use tax for a foreign-flagged boat are separate questions. Not tax advice. Delivery $25,000 base, with a top-up line."
   ];
   const data = { version: "2.1", hull: "mono", labor: "hire", loaUnit: "ft", currency: "USD", currencyRate: 1, fields, refitRows, notes };
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "text/plain" });
