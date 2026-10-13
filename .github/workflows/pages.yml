@@ -32,17 +32,22 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v6
 
-      - name: Stage site
+      - name: Package site
         run: |
-          rm -rf "$RUNNER_TEMP/_site" && mkdir -p "$RUNNER_TEMP/_site"
-          rsync -a --exclude='.git' --exclude='.github' ./ "$RUNNER_TEMP/_site/"
-          test -f "$RUNNER_TEMP/_site/index.html" || { echo "::error::index.html missing from staged site"; exit 1; }
-          echo "Staged $(find "$RUNNER_TEMP/_site" -type f | wc -l) files"
+          rm -f "$RUNNER_TEMP/artifact.tar"
+          tar --exclude='./.git' --exclude='./.github' -cf "$RUNNER_TEMP/artifact.tar" .
+          test -f index.html || { echo "::error::index.html missing"; exit 1; }
+          SIZE=$(wc -c < "$RUNNER_TEMP/artifact.tar")
+          echo "artifact.tar is $SIZE bytes"
+          [ "$SIZE" -gt 1000000 ] || { echo "::error::artifact suspiciously small"; exit 1; }
 
       - name: Upload site
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
-          path: ${{ runner.temp }}/_site
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
       - name: Deploy
         id: deployment
