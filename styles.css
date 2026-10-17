@@ -460,11 +460,12 @@ footer.site {
 
 .chooser {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   min-height: calc(100svh - 58px);
 }
 @media (max-width: 1200px) {
   .chooser { grid-template-columns: 1fr 1fr; }
+  .chooser .pick:last-of-type:nth-of-type(odd) { grid-column: 1 / -1; }
 }
 .pick {
   position: relative;
