@@ -10,17 +10,17 @@ const INS_RATE = 0.02;
 const LIST = 379000;
 const CASH = 400000;
 const LISTING_COUNT = 37;
-const PHOTO_COUNT = 65; // 1–37 listing, 38–65 Matt’s walk-through, 26 Aug 2026
+const PHOTO_COUNT = 64; // 1–37 listing, 38–64 Matt’s walk-through, 26 Aug 2026
 
 const REFIT = [
   ["Anchor", "Keep the Rocna 33 kg and the extra 100 ft of chain. Inspect, and add rode if it is short of a Pacific passage.", 0, 1500],
   ["Anchor", "Keep the Fortress FX-23. Add rode or a snubber as found.", 200, 600],
   ["Anchor", "Windlass and chain-counter service.", 200, 600],
-  ["Dinghy", "Keep the tender. Matt’s August 2026 photos show an aluminium-hull RIB in tan chaps with a covered outboard. The upgrade list says a 2021 Highfield and a November 2023 Tohatsu. The highlights still say an AB with an 8 hp Nissan. Brand and horsepower are not readable in the photos. Service.", 400, 1500],
+  ["Dinghy", "Keep the tender: a Highfield aluminium-hull RIB in tan chaps (confirmed by Matt), the 2021 Highfield on the upgrade list. The outboard appears to be the November 2023 Tohatsu on the same list. The highlights still say an 8 hp Nissan. The owner is to confirm horsepower. Service.", 400, 1500],
   ["Dinghy", "Optional later: an OC Tender sailing package in New Zealand. Leave this at zero if the davits already hold the tender.", 0, 20000],
   ["Elec", "Rewire and tidy the Victron MultiPlus 12/3000/120 already aboard. Matt’s photos show it installed, but poorly wired. Fusing, cable runs, strain relief, AC in and out, labels, done by an ABYC electrician. This is an estimate, not a quote.", 2000, 4500],
   ["Elec", "A galvanic isolator is aboard. It does not make 230 V 50 Hz. This line stays at zero.", 0, 0],
-  ["Energy", "Solar. Three Renogy 175 W panels, 525 W, from 2021. The route wants about 1,000 to 1,200 W.", 2500, 5500],
+  ["Energy", "Solar. The listing says three Renogy 175 W panels, 525 W, from 2021. No panels show in Matt’s photos, so what is aboard is unknown until the walk. The route wants about 1,000 to 1,200 W.", 2500, 5500],
   ["Energy", "House bank. Keep the Lifeline 800 Ah from November 2023 for a season, or step to about 1,000 Ah of lithium.", 0, 8000],
   ["Energy", "Cerbo GX, a touch display, and the wiring.", 500, 900],
   ["Energy", "Victron isolation transformer, 3,600 W, so New Zealand and Australia 230 V shore power has a path to 120 V.", 600, 900],
@@ -34,7 +34,7 @@ const REFIT = [
   ["Nav", "Keep the November 2020 B&G, the 2022 Hydrovane, and the tiller pilot. Service them.", 400, 1500],
   ["Nav", "Optional. A Jefa direct-drive pilot on its own arm, because a second electronic pilot is a preference, not a hole. The vane stays. Leave at zero if the vane is the plan.", 0, 13000],
   ["Nav", "Starlink is aboard (Matt). Mount, DC power, and cable tidy as found. The service plan is a running cost, not refit.", 0, 500],
-  ["Prop", "Yanmar 4JH4-HTE, 110 hp. Hours have read 530 reported since April 2024. Other copies say 770, and a listing photo of the meter looks like the mid-700s. Oil and a 1,000-hour look.", 800, 4000],
+  ["Prop", "Yanmar 4JH4-HTE, 110 hp. 766 hours, verified on the meter by Matt. The ad’s “530 reported” is wrong. There are no service records yet. Oil and a 1,000-hour look.", 800, 4000],
   ["Prop", "Northern Lights genset, advertised at 244 hours. Service and a load test.", 400, 1500],
   ["Prop", "Max Prop and a 2021 PSS shaft seal. Inspect. A Shaft Shark is already fitted.", 200, 800],
   ["Rigging", "Standing rig replacement. Required in every plan: no invoice, so it is 2008 wire. Hired, with terminals and a furler look. An estimate until a rigger quotes.", 16000, 25000],
@@ -68,7 +68,7 @@ const CAPTIONS = {
   4: "Pullman cabin. Upper and lower berths beside the hanging locker.",
   6: "Head compartment. Shower stall, portlight, and the joinery at the door.",
   9: "Engine space under the companionway. The Yanmar, filters, and the raw-water hose.",
-  11: "Mechanical hour meter in the listing photos. The wheels appear to read about 766, which matches ad copies that say 770 and not the line that says 530 reported.",
+  11: "Mechanical hour meter in the listing photos. It reads about 766, which matches the meter Matt verified in August 2026. The ad’s “530 reported” is wrong.",
   15: "Raised saloon. Red settee, chart table, B&G plotter, and the factory switch panel under the windows.",
   19: "Wauquiez electrical panel. Three tank switches, a second battery bank, and the builder’s mark.",
   23: "Galley refrigerator. The plate on the door reads Isotherm.",
@@ -86,12 +86,12 @@ const CAPTIONS = {
   46: "Shore power at the stern. Two inlets fed through a yellow Y-adapter.",
   47: "Swim platform and a Viking RescYou canister just below it. This frame was badly overexposed. It is corrected here as far as the file allows.",
   48: "Life raft aboard: a Viking RescYou, 6-person, in the cockpit locker. The last service stamp on the label reads 05/2018. The Rainman watermaker is stowed beside it.",
-  49: "The tender. An aluminium-hull RIB in tan chaps, with an outboard under a fitted cover. The brand and horsepower are not readable here. The ad copies disagree: a Highfield and a Tohatsu, or an AB and an 8 hp Nissan.",
+  49: "The tender. A Highfield aluminium-hull RIB in tan chaps (confirmed by Matt). The outboard is under a fitted cover. It appears to be the November 2023 Tohatsu on the upgrade list. The owner is to confirm horsepower.",
   50: "Victron MultiPlus 12/3000/120, installed. The listing still says Xantrex 3000. The cable run below it is the poor wiring the rewire line pays for.",
   51: "House batteries strapped in a locker. The listing calls them a Lifeline AGM bank, 800 Ah, November 2023. The label is not readable here.",
   52: "Generator under the saloon sole. Handwriting on the case reads MDKBL, which looks like a Cummins Onan model, not the Northern Lights in the 2024 print. Check the make plate.",
   53: "Engine space. Yanmar 4JH4-HTE, filters, and hoses.",
-  54: "Hour meter on 26 August 2026. It appears to read about 766, the same as the listing photo. That is not the 530 in the ad text, and it has barely moved since 2024.",
+  54: "Hour meter on 26 August 2026: 766 hours, verified by Matt. The ad’s “530 reported” is wrong. The meter has barely moved since the 2024 listing photo. Ask for the service records.",
   55: "Wauquiez International builder’s plate. The phone’s reflection hides most of the text.",
   56: "Lazarette. Rudder stock, steering quadrant, and cables.",
   57: "Front-opening refrigerator in the galley.",
@@ -101,8 +101,7 @@ const CAPTIONS = {
   61: "Bow-thruster tunnel. Barnacle scars and the prop.",
   62: "Hull and keel on stands.",
   63: "Max Prop and the shaft. The bottom needs a sand and antifoul.",
-  64: "Spade rudder. Barnacle scars over old antifoul.",
-  65: "The Anacortes yard. The transom in front reads Black Swan, Portland, OR. That appears to be a neighbouring boat, not Paragon: there is no Hydrovane on it."
+  64: "Spade rudder. Barnacle scars over old antifoul."
 };
 
 const money = (n) => {
@@ -266,8 +265,9 @@ function downloadTru() {
     "Insurance line is 2% of the price in use. The companion .tru file was saved at $7,000.",
     "Tax is $0 unless the Washington switch is on. That switch is about 8.9% if an Oregon buyer misses the 45-day exit. Not tax advice.",
     "Labor in the source file is hire. Delivery $1,500 is Anacortes to Sidney.",
-    "Hours on the current ad say 530 reported and have not moved on paper since April 2024. Other copies say 770. A listing photo of the meter appears to read about 766, and so does Matt's 26 Aug 2026 photo.",
-    "Tender aboard: aluminium-hull RIB with chaps and a covered outboard (Matt's photos). Ad copies conflict: Highfield 2021 + Tohatsu 11/23 vs AB + 8 hp Nissan. Brand and hp unconfirmed."
+    "Engine hours 766, verified on the meter by Matt (26 Aug 2026). The ad's '530 reported' is wrong. Service records still needed.",
+    "Tender: Highfield aluminium RIB with chaps (confirmed by Matt). Outboard appears to be the 11/23 Tohatsu per the upgrade list (highlights say 8 hp Nissan). Owner to confirm hp.",
+    "Solar: listing says 525 W Renogy (2021). Not seen in Matt's photos. Status unknown; confirm on the walk. Genset make (MDKBL handwriting vs Northern Lights) to be confirmed from the make plate."
   ];
   const data = { version: "2.1", hull: "mono", labor: "hire", loaUnit: "ft", currency: "USD", currencyRate: 1, fields, refitRows, notes };
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "text/plain" });

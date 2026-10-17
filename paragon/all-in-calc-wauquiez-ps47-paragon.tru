@@ -50,7 +50,7 @@
     },
     {
       "cat": "Dinghy",
-      "label": "Keep the tender. Matt’s August 2026 photos show an aluminium-hull RIB in tan chaps with a covered outboard. The upgrade list says a 2021 Highfield and a November 2023 Tohatsu. The highlights still say an AB with an 8 hp Nissan. Brand and horsepower are not readable in the photos. Service.",
+      "label": "Keep the tender: a Highfield aluminium-hull RIB in tan chaps (confirmed by Matt), the 2021 Highfield on the upgrade list. The outboard appears to be the November 2023 Tohatsu on the same list. The highlights still say an 8 hp Nissan. The owner is to confirm horsepower. Service.",
       "lo": "400",
       "hi": "1500"
     },
@@ -74,7 +74,7 @@
     },
     {
       "cat": "Energy",
-      "label": "Solar. Three Renogy 175 W panels, 525 W, from 2021. The route wants about 1,000 to 1,200 W.",
+      "label": "Solar. The listing says three Renogy 175 W panels, 525 W, from 2021. No panels show in Matt’s photos, so what is aboard is unknown until the walk. The route wants about 1,000 to 1,200 W.",
       "lo": "2500",
       "hi": "5500"
     },
@@ -158,7 +158,7 @@
     },
     {
       "cat": "Prop",
-      "label": "Yanmar 4JH4-HTE, 110 hp. Hours have read 530 reported since April 2024. Other copies say 770, and a listing photo of the meter looks like the mid-700s. Oil and a 1,000-hour look.",
+      "label": "Yanmar 4JH4-HTE, 110 hp. 766 hours, verified on the meter by Matt. The ad’s “530 reported” is wrong. There are no service records yet. Oil and a 1,000-hour look.",
       "lo": "800",
       "hi": "4000"
     },
@@ -230,17 +230,17 @@
     }
   ],
   "notes": [
-    "Revised 17 Oct 2026 from Matt’s 26 Aug 2026 walk-through: MultiPlus aboard (no inverter purchase, rewire line added); Starlink aboard (satellite purchase removed); life raft aboard (purchase removed, recert added); standing rig replacement mandatory in every scenario; no diesel heat in the low plan; canvas line before Mexico. Tender: aluminium-hull RIB + covered outboard in photos; Highfield/Tohatsu vs AB/Nissan still unconfirmed.",
+    "Revised 17 Oct 2026 from Matt’s 26 Aug 2026 walk-through: MultiPlus aboard (no inverter purchase, rewire line added); Starlink aboard (satellite purchase removed); life raft aboard (purchase removed, recert added); standing rig replacement mandatory in every scenario; no diesel heat in the low plan; canvas line before Mexico. Tender: Highfield aluminium RIB with chaps (confirmed by Matt); outboard appears to be the 11/23 Tohatsu per listing, owner to confirm hp. Engine 766 hrs verified by Matt (ad says 530, wrong); service records still needed. Solar status unknown (525 W listed, not seen in photos). Genset make to be confirmed from plate.",
     "Broker listing still live 22 Sep 2026: $379,000 Anacortes, Seattle Yachts / Alex Knudtson, Denison last updated 17 Aug 2026. Seattle Yachts 2856672_1. YachtWorld 10191914. USCG 1219300, name PARAGON, recreational, Active. Hull 34, built 2008, shoal 5.92 ft / 1.80 m, ballast listed 9,982 lb (factory shoal 8,995). Denison header draft 7'9\" is the other factory option — this hull is the shoal.",
     "2024 packet (Yacht Sales West / SoldBoats print, artifacts/Paragon_2024_listing.pdf): listed 24 Apr 2024 at $379k San Diego field / prose says Paradise Village PV heading to SD, Ian Van Tuyl, LLC owned. Print stamps Sold 24 Feb 2025 at $379,000. Current ask is the same number in a new harbor. Three owners: Annapolis original 2008–21 (Cruisers Forum Paragon19, 40k miles) → CA/Mexico ~2021–25 → Anacortes buyer Feb 2025. Equipment list and hours are frozen from the 2024 print.",
-    "Negotiated Price $340,000 is a planning target — not an offer. Same-price flip + frozen 530 hrs + unknown rig + varnished teak is the discount case. Survey Deduct left blank until an Anacortes haul. Cash $400,000 is the top of the MN&M all-in ceiling. Commissioning has to come from under the ask. Loan left blank.",
+    "Negotiated Price $340,000 is a planning target — not an offer. Same-price flip + an ad that says 530 hrs when the meter reads 766 (verified) + unknown rig + varnished teak is the discount case. Survey Deduct left blank until an Anacortes haul. Cash $400,000 is the top of the MN&M all-in ceiling. Commissioning has to come from under the ask. Loan left blank.",
     "Labor = Hire. Matt is not treating this as a two-year owner refit. Survey and sea trial in Anacortes. First working yard is Sidney / Tsehum after the WA 45-day exit (see Purchase_Tax_Timelines_Eden_Paragon_Terratima.docx). DIY is allowed at Van Isle and Canoe Cove with a work order; this file still costs labour as hired.",
     "Sidney 47 ft averages used in this file (Sidney_BC_Yard_Rates_2026.xlsx, Estimator LOA 47, 3 laydays, FX 0.73, GST on, Canoe env on). Survey haul USD: Westport ~$499 / Van Isle ~$748 / Canoe ~$861 → ~$700 used on Due Diligence Haulout. Full stay USD: Westport ~$1,009 / Canoe ~$1,131 / Van Isle ~$1,331. Paint labour Van Isle $125 CAD/hr published. Blended mech/elec CAD $150/hr (~USD $115 with GST). Westport 47 ft half-lift $446.20 may be a table typo vs 46 ft $538.10 — confirm when booking.",
     "Taxes = $0 in this file if Oregon non-residents take her out of Washington inside 45 days and do not park her as a WA liveaboard. WA use tax is ~8.9% if that clock is missed — do not surprise-add it here, and put the 45-day exit on the purchase agreement (delivery Anacortes, first slip Sidney, dated departure). Already USCG documented; no 1.5% sailboat duty on a domestic documented sale.",
     "Delivery $1,500 is Anacortes → Sidney, not a Gulf of Alaska hop. Insurance ~2% first-year domestic-leaning on a ~$340k close; ocean policy will be higher.",
     "Keep and service, do not replace on day one: Victron MultiPlus 12/3000/120 (aboard per Matt 26 Aug 2026 photos, poorly wired: rewire); Starlink (aboard per Matt); Viking RescYou 6-person raft (aboard; label last stamped 05/2018: recert); Hydrovane 2022 + tiller pilot; Rainman 2021; B&G 11/2020; Quantum HydraNet 2019; Rocna 33 kg + extra 100 ft chain + FX-23; 3 electric winches; bow thruster + 24 V bank; Kato davits; Max Prop + PSS 2021; Frigoboat keel-cooler 2024; Lifeline 800 Ah 11/23 until lithium is scheduled; 2023 enclosure; NL genset 244 hrs advertised; Yanmar 4JH4-HTE 110 hp if the meter is real.",
     "Must add or resolve before the 2029 Pacific: standing-rig replacement (required in every plan); MultiPlus rewire; solar well above 525 W; isolation transformer for NZ/AU 230 V 50 Hz; life raft recert; EPIRB recert; canvas before Mexico. Diesel hydronic heat is $0 in the low plan (no PNW winter aboard) and up to $12,000 on the high side. Dual electronic AP (Jefa line) is optional because the Hydrovane is already there — leave that row at $0 if the vane + existing pilot is the plan.",
-    "Known listing contradictions to clear on the walk: AB dinghy + 8 hp Nissan vs 2021 Highfield vs new Tohatsu 11/23; 530 vs 770 hours; 7'9\" header vs 5.92 ft keel block; holding tank not on every copy (2024 print 30 gal); factory fuel 104 gal / 395 L — no extra tank on the public list. 104 gal is tight for a 472 nm ocean hop; Paragon is not EDEN's 172 gal boat.",
+    "Known listing contradictions to clear on the walk: outboard hp (Tohatsu 11/23 per upgrade list vs 8 hp Nissan in highlights; tender confirmed Highfield); service records behind 766 verified hours (ad says 530); 7'9\" header vs 5.92 ft keel block; holding tank not on every copy (2024 print 30 gal); factory fuel 104 gal / 395 L — no extra tank on the public list. 104 gal is tight for a 472 nm ocean hop; Paragon is not EDEN's 172 gal boat.",
     "Swing items that decide whether she fits the ceiling: close price, rigger quote, teak substrate under the 2023 varnish, canvas scope, and whether you buy diesel heat + lithium now. Low path (new standing rig at $16k est., teak only recaulk, no heat, keep AGM, skip Jefa, skip OC Tender) lands about $408k at a $340k close, roughly $8k over the $400k cap. High path is a park north of $450k.",
     "Walk her in Anacortes the same trip as Majestic. Ask on camera: hour-meter + engine plate today; standing-rig receipts or a pull; teak thickness / plugs / seams (not just the varnish story); title chain out of the 2024 LLC; any work after Feb 2025; dinghy and outboard as they sit; heat confirmation (no hidden diesel furnace); tank stickers 104 / 211 / 30."
   ]
