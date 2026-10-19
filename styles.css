@@ -554,3 +554,13 @@ footer.site {
   .phase .mark { text-align: left; padding-left: 1.4rem; }
   .phase article::before { left: -0.15rem; }
 }
+
+.dist { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 34rem; background: var(--card); }
+.dist th { text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--ink); white-space: nowrap; }
+.dist td { padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--line); font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; }
+.dist td:first-child { font-family: inherit; font-weight: 600; white-space: nowrap; }
+.dist td.src { font-family: inherit; font-size: 0.82rem; color: var(--muted); }
+#jamie .note p { margin-bottom: 0.35rem; }
+@media (max-width: 640px) {
+  #jamie.split { grid-template-columns: 1fr; }
+}

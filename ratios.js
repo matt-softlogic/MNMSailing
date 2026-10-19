@@ -1,7 +1,7 @@
 /* Design-ratio bands for the boats on this site.
    Scales are the ones Sailing Totem prints in Boat Design Ratios.
-   Custom indexes (Real Feel, roomy ratio, Kerr speed) are omitted.
-   Their formulas are not published. */
+   Speed and Roomy Ratio follow Jamie's presentation (formulas below).
+   Real Feel and Kerr speed are omitted. Their formulas are not published. */
 
 const MUTED = "#5c6b76";
 const BAND = ["rgba(22,32,41,0.05)", "rgba(154,103,50,0.18)", "rgba(12,82,124,0.13)", "rgba(154,103,50,0.18)", "rgba(22,32,41,0.07)"];
@@ -19,7 +19,34 @@ const BOATS = {
   majestic: { name: "Majestic", color: "#c9952b", symbol: "diamond" }
 };
 
+function fmt(n, digits) {
+  return Number(n).toFixed(digits).replace(/\.0$/, "").replace(/(\.\d)0$/, "$1");
+}
+
 const pct = (n) => Math.round(n * 10) / 10;
+
+/* Inputs for Jamie's speed and the Roomy Ratio. Same sheets as the charts:
+   LOA, LWL, beam in feet, D/L as charted. Transom factor is an estimate,
+   0.8 for a narrow canoe stern up to 1.3 for beam carried fully aft. */
+const DIMS = {
+  saralynn: { loa: 58.40, lwl: 49.25, beam: 16.17, dl: 181.71, transom: 1.1, src: "Jamie doc (Beneteau 57)" },
+  paragon: { loa: 47.08, lwl: 41.83, beam: 14.8, dl: 188, transom: 1.0, src: "Jamie doc (Wauquiez PS47)" },
+  eden: { loa: 47.08, lwl: 41.83, beam: 14.8, dl: 188, transom: 1.0, src: "Jamie doc (Wauquiez PS47)" },
+  phoenix: { loa: 47.08, lwl: 41.83, beam: 14.8, dl: 188, transom: 1.0, src: "Jamie doc (Wauquiez PS47)" },
+  mariana: { loa: 47 + 8 / 12, lwl: 38.75, beam: 14 + 5 / 12, dl: 259, transom: 0.9, src: "Jamie doc factor (Moody 47 Mk II); site dimensions" },
+  secondwind: { loa: 46.32, lwl: 42.42, beam: 14.53, dl: 152.14, transom: 1.3, src: "Jamie doc (Sense 46)" },
+  pegasus: { loa: 49.92, lwl: 43.83, beam: 14.75, dl: 196, transom: 1.1, src: "Jamie doc factor (Hunter 50 CC); shoal sheet" },
+  silverpearl: { loa: 45, lwl: 42.42, beam: 15, dl: 180.5, transom: 1.2, src: "Jamie doc factor (Moody 45 DS); site dimensions" },
+  unicorn: { loa: 44.17, lwl: 34.87, beam: 13.5, dl: 235.01, transom: 0.85, src: "Estimated here (Hylas 44, not in the doc)" },
+  majestic: { loa: 54.92, lwl: 48.5, beam: 15.92, dl: 146.66, transom: 1.2, src: "Jamie doc (Jeanneau 54 DS)" }
+};
+const AVG_FACTOR = 17.2;
+const classicKn = (d) => 1.34 * Math.sqrt(d.lwl);
+const gerrKn = (d) => 8.26 / Math.pow(d.dl, 0.311) * Math.sqrt(d.lwl);
+const jamieKn = (d) => (classicKn(d) + gerrKn(d)) / 2;
+const roomy = (d) => ((d.lwl / d.loa) * 0.5 + (d.beam / d.loa) * (d.lwl / d.loa) * d.transom) * 100;
+const roomyBand = (r) => (r < 55 ? "Small" : r < 65 ? "Moderate" : r < 75 ? "Spacious" : "Huge");
+const perBoat = (fn, digits) => Object.fromEntries(Object.keys(DIMS).map((id) => [id, Math.round(fn(DIMS[id]) * 10 ** digits) / 10 ** digits]));
 
 const CHARTS = [
   {
@@ -108,18 +135,28 @@ const CHARTS = [
     note: "The line is 2.0, the old offshore screen. Under it is not a stability certificate. Second Wind’s published 1.97 is the closest of the six. Pegasus is 1.77 on the shoal sheet. Paragon’s listing beam is wider than the class beam used here. Eden sits on Paragon’s class figure."
   },
   {
-    key: "hull",
-    title: "Hull speed",
-    min: 7.6, max: 9.7, unit: " kn", digits: 2,
+    key: "jamie",
+    title: "Jamie speed",
+    min: 8, max: 11.2, unit: " kn", digits: 2,
     bands: [],
-    values: { saralynn: 9.40, paragon: 8.7, eden: 8.7, phoenix: 8.7, mariana: 8.34, secondwind: 8.73, pegasus: 8.9, silverpearl: 8.73, unicorn: 7.91, majestic: 9.33 },
-    note: "1.34 × √LWL. A displacement ceiling, not a day’s run. Sara Lynn’s 9.40 uses the 49.25 ft waterline. Mariana’s number rises if her real waterline is longer than 38.75 ft. Second Wind’s 8.73 uses the class waterline, 42.42 ft. Pegasus’s 8.9 uses 43.83 ft. Eden shares Paragon’s 41.83 ft class waterline."
+    values: perBoat(jamieKn, 2),
+    note: "Jamie’s cruiser speed, the midpoint of classic hull speed (1.34 × √LWL) and Gerr’s lighter-boat allowance (8.26 ÷ D/L^0.311 × √LWL). A theoretical pace for a well-sailed boat, not a day’s run. Classic / Gerr in knots: " + Object.keys(DIMS).map((id) => `${BOATS[id].name} ${fmt(classicKn(DIMS[id]), 1)} / ${fmt(gerrKn(DIMS[id]), 1)}`).join(", ") + ". Light boats gain most from Gerr, so Majestic and Second Wind move up and Mariana and Unicorn stay close to their classic number. Paragon at her listing weight (D/L about 203) would read about 9.45; Eden and Phoenix at their survey weight (about 220) about 9.32."
+  },
+  {
+    key: "roomy",
+    title: "Roomy Ratio",
+    min: 50, max: 90, unit: "", digits: 1,
+    bands: [
+      { from: 50, to: 55, name: "Small" },
+      { from: 55, to: 65, name: "Moderate" },
+      { from: 65, to: 75, name: "Spacious" },
+      { from: 75, to: 90, name: "Huge" }
+    ],
+    values: perBoat(roomy, 1),
+    note: "Jamie’s monohull scale: under 55 small, 55–65 moderate, 65–75 spacious, over 75 huge. It rewards a long waterline for the length and beam carried aft, so it measures usable volume, not layout. A deck saloon and an aft-cockpit boat can score the same. The transom factor is an estimate for every boat: " + Object.keys(DIMS).map((id) => `${BOATS[id].name} ${DIMS[id].transom % 1 ? DIMS[id].transom : DIMS[id].transom.toFixed(1)}`).join(", ") + ". Silver Pearl scores highest: a 42.42 ft waterline on 45 ft overall, the 15 ft beam the site uses, and an estimated 1.2 transom. On the doc’s 14.5 ft beam she would read about 83.6."
   }
 ];
 
-function fmt(n, digits) {
-  return Number(n).toFixed(digits).replace(/\.0$/, "").replace(/(\.\d)0$/, "$1");
-}
 
 function renderCards() {
   const grid = document.getElementById("chartGrid");
@@ -189,6 +226,27 @@ function draw(spec) {
   return chart;
 }
 
+function renderTables() {
+  const ids = Object.keys(DIMS);
+  const dist = document.getElementById("distTable");
+  if (dist) {
+    const rows = ids.slice().sort((a, b) => jamieKn(DIMS[b]) - jamieKn(DIMS[a])).map((id) => {
+      const d = DIMS[id], j = jamieKn(d);
+      return `<tr><td>${BOATS[id].name}</td><td>${d.lwl.toFixed(2)}</td><td>${Math.round(d.dl)}</td><td>${classicKn(d).toFixed(1)}</td><td>${gerrKn(d).toFixed(1)}</td><td><b>${j.toFixed(1)}</b></td><td><b>${Math.round(j * 24)}</b></td><td>${Math.round(j * AVG_FACTOR)}</td></tr>`;
+    }).join("");
+    dist.innerHTML = `<thead><tr><th>Boat</th><th>LWL ft</th><th>D/L</th><th>Classic kn</th><th>Gerr kn</th><th>Jamie kn</th><th>Max 24 h nm</th><th>Avg 24 h nm</th></tr></thead><tbody>${rows}</tbody>`;
+  }
+  const rt = document.getElementById("roomyTable");
+  if (rt) {
+    const rows = ids.slice().sort((a, b) => roomy(DIMS[b]) - roomy(DIMS[a])).map((id) => {
+      const d = DIMS[id], r = roomy(d);
+      return `<tr><td>${BOATS[id].name}</td><td>${d.loa.toFixed(2)}</td><td>${d.lwl.toFixed(2)}</td><td>${d.beam.toFixed(2)}</td><td>${d.transom.toFixed(2)}</td><td><b>${r.toFixed(1)}</b></td><td>${roomyBand(r)}</td><td class="src">${d.src}</td></tr>`;
+    }).join("");
+    rt.innerHTML = `<thead><tr><th>Boat</th><th>LOA ft</th><th>LWL ft</th><th>Beam ft</th><th>Transom, est.</th><th>Roomy</th><th>Band</th><th>Transom source</th></tr></thead><tbody>${rows}</tbody>`;
+  }
+}
+
 renderCards();
+renderTables();
 const charts = CHARTS.map(draw);
 window.addEventListener("resize", () => charts.forEach((c) => c.resize()));
